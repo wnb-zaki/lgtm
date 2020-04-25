@@ -41,11 +41,14 @@ class _LoremFlickr(RemoteImage):
 KeywordImage = _LoremFlickr
 
 
+# コンストラクタとして利用するため
+# 単語を大文字始まりにしてクラスのように見せる
+
 def ImageSource(keyword):
     """最適なイメージソースクラスを返す"""
     if keyword.startswith(('http://', 'https://')):
         return RemoteImage(keyword)
-    elif Path(keyword).exits()
+    elif Path(keyword).exits():
         return LocalImage(keyword)
     else:
         return KeywordImage(keyword)
