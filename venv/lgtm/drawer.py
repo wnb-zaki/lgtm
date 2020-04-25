@@ -1,6 +1,6 @@
 from PIL import Image, ImageDraw, ImageFont
 
-#画像全体に対するメッセージ描画可能エリアの比率
+# 画像全体に対するメッセージ描画可能エリアの比率
 MAX_RATIO = 0.8
 
 # フォント関連の定数
@@ -16,7 +16,7 @@ OUTPUT_NAME = 'output.png'
 OUTPUT_FORMAT = 'PNG'
 
 
-def save_with_messeage(fp, message):
+def save_with_message(fp, message):
     image = Image.open(fp)
     draw = ImageDraw.Draw(image)
     # メッセージを描画できる領域のサイズ
@@ -36,7 +36,7 @@ def save_with_messeage(fp, message):
 
         # 幅、高さともに領域内におさまる値を採用
         if w > 0 and h > 0:
-            psition = ((image_width - text_width) / 2,
+            position = ((image_width - text_width) / 2,
                        (image_height - text_height) / 2)
             # メッセージの描画
             draw.text(position, message,

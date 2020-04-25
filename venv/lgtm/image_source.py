@@ -19,8 +19,8 @@ class RemoteImage:
         self._url = path
 
     def get_image(self):
-        data = requests.get(self.url)
-        #　バイトデータをファイルオブジェクトに変換
+        data = requests.get(self._url)
+        # バイトデータをファイルオブジェクトに変換
         return BytesIO(data.content)
 
 
@@ -48,7 +48,7 @@ def ImageSource(keyword):
     """最適なイメージソースクラスを返す"""
     if keyword.startswith(('http://', 'https://')):
         return RemoteImage(keyword)
-    elif Path(keyword).exits():
+    elif Path(keyword).exists():
         return LocalImage(keyword)
     else:
         return KeywordImage(keyword)
